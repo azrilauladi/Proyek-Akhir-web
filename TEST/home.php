@@ -43,6 +43,44 @@ $result = $stmt->get_result();
             margin-right: 10px;
             vertical-align: middle;
         }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            transition: 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+        .card h2 {
+            margin: 10px 0;
+        }
+        .card p {
+            color: #333;
+        }
+        .stats-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            padding: 5px;
+            background-color: #f5f5f5;
+            border-radius: 3px;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .vote-count {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -65,7 +103,7 @@ $result = $stmt->get_result();
     <div class="Line"></div>
     <div class="Content">
         <?php while ($post = $result->fetch_assoc()): ?>
-            <div class="Post">
+            <div class="card">
                 <p>
                     <?php if (!empty($post['profile_photo'])): ?>
                         <img src="<?php echo htmlspecialchars($post['profile_photo']); ?>" 
