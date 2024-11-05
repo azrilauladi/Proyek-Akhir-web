@@ -32,58 +32,21 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InfoCation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="Style/Home.css">
-    <script defer src="Home.js"></script>
-    <style>
-        .profile-photo {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-        .card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-            padding: 20px;
-            transition: 0.3s;
-        }
-        .card:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        .card img {
-            border-radius: 10px;
-            max-width: 100%;
-            height: auto;
-        }
-        .card h2 {
-            margin: 10px 0;
-        }
-        .card p {
-            color: #333;
-        }
-        .stats-container {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-            padding: 5px;
-            background-color: #f5f5f5;
-            border-radius: 3px;
-        }
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .vote-count {
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
+    <!-- Top Header -->
+    <div class="Top">
+        <div class="Logo">
+            <img src="Asset/Logo kecil.png" alt="InfoCation">
+        </div>
+        <a href="logout.php">
+            <button type="button" class="btn">Logout</button>
+        </a>
+    </div>
+    <div class="Line"></div>
+
+    <!-- Navbar -->
     <nav class="navbar">
         <ul>
             <li><a href="home.php"><img src="Asset/logo home.png" alt=""></a></li>
@@ -92,57 +55,52 @@ $result = $stmt->get_result();
             <li><a href="userprofile.php"><img src="Asset/logo Profile.png" alt=""></a></li>
         </ul>
     </nav>
-    <div class="Top">
-        <div class="Logo">
-            <img src="Asset/Logo kecil.png" alt="">
-        </div>
-        <a href="logout.php">
-            <button type="button" class="btn">Logout</button>
-        </a>
-    </div>
-    <div class="Line"></div>
-    <div class="Content">
-        <?php while ($post = $result->fetch_assoc()): ?>
-            <div class="card">
-                <p>
-                    <?php if (!empty($post['profile_photo'])): ?>
-                        <img src="<?php echo htmlspecialchars($post['profile_photo']); ?>" 
-                             alt="Profile Photo" 
-                             class="profile-photo">
-                    <?php endif; ?>
-                    Oleh: <?php echo htmlspecialchars($post['username']); ?> | 
-                    <?php echo date('d M Y H:i', strtotime($post['created_at'])); ?>
-                </p>
-                <h2><?php echo htmlspecialchars($post['title']); ?></h2>
-                <p><?php echo nl2br(htmlspecialchars($post['body'])); ?></p>
-                
-                <?php if (!empty($post['photo'])): ?>
-                    <img src="<?php echo htmlspecialchars($post['photo']); ?>" 
-                         alt="Post image" 
-                         class="post-image">
-                <?php endif; ?>
-                
-                <div class="stats-container">
-                    <div class="stat-item">
-                        <button class="button" onclick="vote(<?php echo $post['id']; ?>, 'upvote')">
-                            👍
-                        </button>
-                        <span class="vote-count"><?php echo $post['upvote_count']; ?></span>
+
+    <!-- Content -->
+    <div class="content-wrapper">
+        <main class="Content">
+            <?php while ($post = $result->fetch_assoc()): ?>
+                <div class="post-card">
+                    <div class="post-header">
+                        <?php if (!empty($post['profile_photo'])): ?>
+                            <img src="<?php echo htmlspecialchars($post['profile_photo']); ?>" 
+                                 alt="Profile Photo" 
+                                 class="profile-photo">
+                        <?php endif; ?>
+                        <span>Oleh: <?php echo htmlspecialchars($post['username']); ?></span>
+                        <span>|</span>
+                        <span><?php echo date('d M Y H:i', strtotime($post['created_at'])); ?></span>
                     </div>
-                    <div class="stat-item">
-                        <button class="button" onclick="vote(<?php echo $post['id']; ?>, 'downvote')">
-                            👎
-                        </button>
-                        <span class="vote-count"><?php echo $post['downvote_count']; ?></span>
+                    
+                    <div class="post-content">
+                        <?php echo nl2br(htmlspecialchars($post['body'])); ?>
+                        <?php if (!empty($post['photo'])): ?>
+                            <img src="<?php echo htmlspecialchars($post['photo']); ?>" 
+                                 alt="Post image" 
+                                 class="post-image">
+                        <?php endif; ?>
                     </div>
-                    <div class="stat-item">
-                        <a href="comments.php?post_id=<?php echo $post['id']; ?>" style="text-decoration: none; color: inherit;">
-                            💬 <span class="vote-count"><?php echo $post['comment_count']; ?></span>
-                        </a>
+
+                    <div class="post-stats">
+                        <div class="stat-item">
+                            <button onclick="vote(<?php echo $post['id']; ?>, 'upvote')">
+                                👍 <?php echo $post['upvote_count']; ?>
+                            </button>
+                        </div>
+                        <div class="stat-item">
+                            <button onclick="vote(<?php echo $post['id']; ?>, 'downvote')">
+                                👎 <?php echo $post['downvote_count']; ?>
+                            </button>
+                        </div>
+                        <div class="stat-item">
+                            <a href="comments.php?post_id=<?php echo $post['id']; ?>" style="color: white; text-decoration: none;">
+                                💬 <?php echo $post['comment_count']; ?>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php endwhile; ?>
+            <?php endwhile; ?>
+        </main>
     </div>
 
     <script>
@@ -166,7 +124,6 @@ $result = $stmt->get_result();
             
             const result = await response.json();
             if (result.success) {
-                // Refresh halaman untuk memperbarui jumlah vote
                 location.reload();
             } else {
                 alert(result.message || 'Error recording vote');
