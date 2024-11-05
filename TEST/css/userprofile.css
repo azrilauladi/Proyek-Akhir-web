@@ -1,0 +1,161 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* Header styles */
+        .Top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: transparent;
+        }
+
+        .Logo {
+            height: 40px;
+        }
+
+        .Logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .Line {
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 0 2rem;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 0 15px 15px 0;
+            padding: 1rem 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .navbar li {
+            width: 100%;
+            text-align: center;
+        }
+
+        .navbar img {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s;
+        }
+
+        .navbar a:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Content styles */
+        .Content {
+            margin-left: 100px;
+            margin-right: 20px;
+            padding: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .post-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .post-content {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .post-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+        }
+
+        .post-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .stat-item button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        /* Centering content and posts */
+        .content-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-left: 80px; /* Space for navbar */
+            padding: 1rem;
+        }
+
+        .profile-photo {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
