@@ -141,6 +141,9 @@ $user = $user_result->fetch_assoc();
             <div class="form-group">
                 <button type="submit">Update Profile</button>
             </div>
+            <div class="form-group">
+                <button type="button" onclick="window.location.href='userprofile.php'">Back to Profile</button>
+            </div>
         </form>
     </div>
 </body>
