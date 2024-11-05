@@ -35,6 +35,15 @@ $result = $stmt->get_result();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="Style/Home.css">
     <script defer src="Home.js"></script>
+    <style>
+        .profile-photo {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -50,8 +59,8 @@ $result = $stmt->get_result();
             <img src="Asset/Logo kecil.png" alt="">
         </div>
         <a href="logout.php">
-    <button type="button" class="btn">Logout</button>
-</a>
+            <button type="button" class="btn">Logout</button>
+        </a>
     </div>
     <div class="Line"></div>
     <div class="Content">
