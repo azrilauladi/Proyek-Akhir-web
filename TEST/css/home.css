@@ -2,136 +2,154 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    background: url(Asset/BG1.png) no-repeat center center fixed;
-    background-size: cover;
+    background-color: #000000;
+    color: #ffffff;
+    min-height: 100vh;
 }
 
-.navbar {
-    position: fixed;
-    background-color: #64444d;
-    width: 80px;
-    height: 55vh;
-    top: 55%;
-    left: 60px;
-    transform: translate(-50%, -50%);
-    padding: 60px 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-}
-
-.navbar i {
-    color: #EEE7ED;
-    font-size: 20px;
-    border-radius: 50%;
-    transition: background-color 0.1s, transform 0.1s;
-    padding: 5px;
-}
-
-.navbar ul {
-    list-style-type: none;
-}
-
-.navbar li {
-    text-align: center;
-}
-
-.navbar a{
-    display: inline-block;
-    padding: 15px;
-    border-radius: 50%; 
-    transition: background-color 0.1s, transform 0.1s;
-}
-
-.navbar a:hover {
-    background-color: #A6979C;
-    font-size: 5px;
-}
-
+/* Header styles */
 .Top {
     display: flex;
     justify-content: space-between;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: url(Asset/BG1.png) no-repeat center center fixed;
-    background-size: cover;
-    padding: 20px;
-    z-index: 1000;
-    border-bottom: 2px solid #64444d;
-    margin-bottom: 30px;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: transparent;
 }
 
-.Top .Logo {
-    align-self: flex-start;
-}
-
-.Top .btn {
-    width: 120px;
+.Logo {
     height: 40px;
-    background: #64444d;
-    color: #EEE7ED;
+}
+
+.Logo img {
+    height: 100%;
+    width: auto;
+}
+
+.btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
     border: none;
-    border-radius: 40px;
-    font-size: 16px;
-    transition: 0.3s ease;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
     cursor: pointer;
-    margin: 0px 0px 0px 0px;
-    font-weight: 600;
-}
-
-.btn:hover {
-    transform: scale(0.90);
-}
-
-.btn:active {
-    transform: scale(0.90)
+    font-weight: bold;
 }
 
 .Line {
-    border-top: 5px solid #64444d;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 0 2rem;
 }
 
-.Content {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    place-items: center;
-    margin-top: 100px;
+/* Navbar styles */
+.navbar {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 0 15px 15px 0;
+    padding: 1rem 0;
 }
 
-.Content .Post {
+.navbar ul {
+    list-style: none;
     display: flex;
-    width: 600px;
-    margin: 20px 40px;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.navbar li {
+    width: 100%;
+    text-align: center;
+}
+
+.navbar img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+}
+
+.navbar a:hover img {
+    transform: scale(1.1);
+}
+
+/* Content styles */
+.Content {
+    margin-left: 100px;
+    margin-right: 20px;
+    padding: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.post-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.post-content {
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+}
+
+.post-stats {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.stat-item button {
+    background: none;
     border: none;
-    border-radius: 30px;
-    color: #ffffff;
-    background-color: #AA8385;
-    font-size: 16px;
-    padding: 20px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.9rem;
 }
 
-.Post a {
-    width: 25px;
-    height: 25px;
-}
-
-.Post h1 {
-    padding: 5px;
-    color: #FFFFFF;
-    font-size: 16px;
-}
-
-.Post h2 {
-    padding: 5px;
-    color: #FFFFFF;
-    font-size: 16px;
+/* Centering content and posts */
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px; /* Space for navbar */
+    padding: 1rem;
 }
 
 .profile-photo {
@@ -140,28 +158,4 @@ body {
     border-radius: 50%;
     margin-right: 10px;
     vertical-align: middle;
-}
-
-.post-image {
-    max-width: 200px;
-    height: auto;
-}
-
-.stats-container {
-    display: flex;
-    gap: 15px;
-    margin-top: 10px;
-    padding: 5px;
-    background-color: #f5f5f5;
-    border-radius: 3px;
-}
-
-.stat-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.vote-count {
-    font-weight: bold;
 }
